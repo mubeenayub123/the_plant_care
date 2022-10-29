@@ -3,11 +3,18 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.raise_delivery_errors = true
+
   config.action_mailer.default_url_options = { :host => 'mighty-dawn-74746.herokuapp.com', :protocol => 'http' }
 
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
+    domain:               'mighty-dawn-74746.herokuapp.com',
     user_name:            'fyp34b@gmail.com',
     password:             '2113e249',
     authentication:       'plain'

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @irrigation_system %>
+
+<div>
+  <%= link_to "Edit this irrigation system", edit_irrigation_system_path(@irrigation_system) %> |
+  <%= link_to "Back to irrigation systems", irrigation_systems_path %>
+
+  <%= button_to "Destroy this irrigation system", @irrigation_system, method: :delete %>
+</div>

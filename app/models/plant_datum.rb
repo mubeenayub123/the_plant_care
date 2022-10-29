@@ -1,0 +1,2 @@
+class PlantDatum < ApplicationRecord
+end

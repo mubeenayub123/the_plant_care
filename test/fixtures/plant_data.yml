@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  humidity: 9.99
+  light_intensity: 9.99
+  temprature: 9.99
+  soil_moisture: 9.99
+  solenoid_walve: 9.99
+
+two:
+  humidity: 9.99
+  light_intensity: 9.99
+  temprature: 9.99
+  soil_moisture: 9.99
+  solenoid_walve: 9.99

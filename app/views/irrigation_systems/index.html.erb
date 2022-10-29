@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Irrigation systems</h1>
+
+<div id="irrigation_systems">
+  <% @irrigation_systems.each do |irrigation_system| %>
+    <%= render irrigation_system %>
+    <p>
+      <%= link_to "Show this irrigation system", irrigation_system %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New irrigation system", new_irrigation_system_path %>

@@ -1,0 +1,26 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Plant Data</h1>
+
+<div id="plant_data">
+  <table class='table table-striped'>
+    <tr>
+      <th scope="col" >Irrigation System UUID</th>
+      <th scope="col" >Soil Moisture</th>
+      <th scope="col" >Humidity</th>
+      <th scope="col" >Temprature</th>
+      <th scope="col" >Light Intensity</th>
+      <th scope="col" >Water Walve</th>
+    </tr>
+  <% @plant_data.each do |plant_datum| %>
+        <tr>
+          <td><%= plant_datum.irrigation_system_id%></td>
+          <td><%= plant_datum.soil_moisture%></td>
+          <td><%=plant_datum.humidity %></td>
+          <td><%=plant_datum.temprature %></td>
+          <td><%=plant_datum.light_intensity %></td>
+          <td><%=plant_datum.solenoid_walve %></td>
+        </tr>
+  <% end %>
+  </table>
+</div>

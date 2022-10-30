@@ -14,6 +14,9 @@ class PlantDataController < ApplicationController
       light_intensity: plant_data_params[:light_intensity],
       solenoid_walve: plant_data_params[:solenoid_walve],
     )
+
+    puts 'klsajdkladsjkldajskldsajkldsajkldsakjldsakljdsakjldsakjldsakjlsadkljadskjl'
+    puts plant_data
     irrigation_system = IrrigationSystem.find_by(uuid: plant_data_params[:irrigation_system_uuid])
     plant_data.update irrigation_system: irrigation_system
   end

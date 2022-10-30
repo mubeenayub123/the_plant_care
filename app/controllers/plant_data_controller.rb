@@ -17,7 +17,7 @@ class PlantDataController < ApplicationController
 
     puts 'klsajdkladsjkldajskldsajkldsajkldsakjldsakljdsakjldsakjldsakjlsadkljadskjl'
     puts plant_data
-    puts plant_data.errors
+    puts plant_data.errors.full_messages
     irrigation_system = IrrigationSystem.find_by(uuid: plant_data_params[:irrigation_system_uuid])
     plant_data.update irrigation_system: irrigation_system
   end

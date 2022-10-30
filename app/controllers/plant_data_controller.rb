@@ -16,10 +16,6 @@ class PlantDataController < ApplicationController
       solenoid_walve: plant_data_params[:solenoid_walve],
       irrigation_system: irrigation_system
     )
-
-    puts 'klsajdkladsjkldajskldsajkldsajkldsakjldsakljdsakjldsakjldsakjlsadkljadskjl'
-    puts plant_data
-    puts plant_data.errors.full_messages
   end
 
   def plant_data_params

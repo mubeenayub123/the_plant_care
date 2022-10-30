@@ -14,7 +14,7 @@
     </tr>
   <% @plant_data.each do |plant_datum| %>
         <tr>
-          <td><%= plant_datum.irrigation_system_id%></td>
+          <td><%= plant_datum&.irrigation_system&.uuid%></td>
           <td><%= plant_datum.soil_moisture%></td>
           <td><%=plant_datum.humidity %></td>
           <td><%=plant_datum.temprature %></td>

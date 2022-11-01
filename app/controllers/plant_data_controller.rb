@@ -3,7 +3,7 @@ class PlantDataController < ApplicationController
   skip_before_action :verify_authenticity_token, except: %w[index]
 
   def index
-    @plant_data = PlantDatum.all
+    @plant_data = PlantDatum.last(10).reverse
   end
 
   def create

@@ -1,3 +1,8 @@
+<head>
+  <meta http-equiv="refresh" content="30" />
+</head>
+
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Plant Data</h1>
@@ -11,15 +16,17 @@
       <th scope="col" >Temprature</th>
       <th scope="col" >Light Intensity</th>
       <th scope="col" >Water Walve</th>
+      <th scope="col" >Created at</th>
     </tr>
   <% @plant_data.each do |plant_datum| %>
         <tr>
           <td><%= plant_datum&.irrigation_system&.uuid%></td>
           <td><%= plant_datum.soil_moisture%></td>
-          <td><%=plant_datum.humidity %></td>
-          <td><%=plant_datum.temprature %></td>
-          <td><%=plant_datum.light_intensity %></td>
-          <td><%=plant_datum.solenoid_walve %></td>
+          <td><%= plant_datum.humidity %></td>
+          <td><%= plant_datum.temprature %></td>
+          <td><%= plant_datum.light_intensity %></td>
+          <td><%= plant_datum.solenoid_walve %></td>
+          <td><%= plant_datum.created_at %></td>
         </tr>
   <% end %>
   </table>

@@ -18,6 +18,10 @@ class PlantDataController < ApplicationController
     )
   end
 
+  def export
+    send_data PlantDatum.csv, filename: "plant-data-#{Time.now}.csv", type: "application/csv", disposition: 'attachment'
+  end
+
   def plant_data_params
     params.require(:plant_data).permit(:soil_moisture, :humidity, :temprature, :solenoid_walve, :light_intensity, :irrigation_system_uuid)
   end

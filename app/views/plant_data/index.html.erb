@@ -5,8 +5,10 @@
 
 <p style="color: green"><%= notice %></p>
 
-<h1>Plant Data</h1>
-
+<div class="d-flex align-items-center justify-content-between">
+  <h1>Plant Data</h1>
+  <%= link_to "Export Data", export_plant_data_path,method: 'get', data: {turbolinks: false}, :class => 'btn btn-primary btn-sm' %>
+</div>
 <div id="plant_data">
   <table class='table table-striped'>
     <tr>

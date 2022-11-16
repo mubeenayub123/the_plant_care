@@ -17,9 +17,6 @@ class PlantDataController < ApplicationController
       irrigation_system: irrigation_system
     )
 
-    puts '55555555555555555555555555555555555555555555555555555555555555555555555555555555'
-    puts plant_data.errors.full_messages
-
     SoilMoistureDatum.create(
       value: plant_data_params[:value_1],
       water_pump: plant_data_params[:pump_1],

@@ -17,10 +17,21 @@ class PlantDataController < ApplicationController
       irrigation_system: irrigation_system
     )
 
-    SoilMoistureDatum.create(value: plant_data_params[:value_1], water_pump: plant_data_params[:pump_1], sensor_no: 1,
-                             plant_datum: plant_data)
-    SoilMoistureDatum.create(value: plant_data_params[:value_2], water_pump: plant_data_params[:pump_2], sensor_no: 2,
-                             plant_datum: plant_data)
+    puts '55555555555555555555555555555555555555555555555555555555555555555555555555555555'
+    puts plant_data.errors.full_messages
+
+    SoilMoistureDatum.create(
+      value: plant_data_params[:value_1],
+      water_pump: plant_data_params[:pump_1],
+      sensor_no: 1,
+      plant_datum: plant_data
+    )
+    SoilMoistureDatum.create(
+      value: plant_data_params[:value_2],
+      water_pump: plant_data_params[:pump_2],
+      sensor_no: 2,
+      plant_datum: plant_data
+    )
   end
 
   def export

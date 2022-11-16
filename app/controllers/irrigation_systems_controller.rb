@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class IrrigationSystemsController < ApplicationController
-  before_action :set_irrigation_system, only: %i[ show edit update destroy ]
+  before_action :set_irrigation_system, only: %i[show edit update destroy]
 
   # GET /irrigation_systems or /irrigation_systems.json
   def index
@@ -7,8 +9,7 @@ class IrrigationSystemsController < ApplicationController
   end
 
   # GET /irrigation_systems/1 or /irrigation_systems/1.json
-  def show
-  end
+  def show; end
 
   # GET /irrigation_systems/new
   def new
@@ -16,8 +17,7 @@ class IrrigationSystemsController < ApplicationController
   end
 
   # GET /irrigation_systems/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /irrigation_systems or /irrigation_systems.json
   def create
@@ -25,8 +25,10 @@ class IrrigationSystemsController < ApplicationController
     @irrigation_system.user = current_user
 
     respond_to do |format|
-      if @irrigation_system.save
-        format.html { redirect_to irrigation_system_url(@irrigation_system), notice: "Irrigation system was successfully created." }
+      if @irrigation_system.save && create_irrigation_system_plant
+        format.html do
+          redirect_to irrigation_system_url(@irrigation_system), notice: 'Irrigation system was successfully created.'
+        end
         format.json { render :show, status: :created, location: @irrigation_system }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,8 +40,10 @@ class IrrigationSystemsController < ApplicationController
   # PATCH/PUT /irrigation_systems/1 or /irrigation_systems/1.json
   def update
     respond_to do |format|
-      if @irrigation_system.update(irrigation_system_params)
-        format.html { redirect_to irrigation_system_url(@irrigation_system), notice: "Irrigation system was successfully updated." }
+      if @irrigation_system.update(irrigation_system_params) && update_irrigation_system_plant
+        format.html do
+          redirect_to irrigation_system_url(@irrigation_system), notice: 'Irrigation system was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @irrigation_system }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -50,22 +54,36 @@ class IrrigationSystemsController < ApplicationController
 
   # DELETE /irrigation_systems/1 or /irrigation_systems/1.json
   def destroy
+    @irrigation_system.irrigation_system_plants.destroy_all
     @irrigation_system.destroy
 
     respond_to do |format|
-      format.html { redirect_to irrigation_systems_url, notice: "Irrigation system was successfully destroyed." }
+      format.html { redirect_to irrigation_systems_url, notice: 'Irrigation system was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_irrigation_system
-      @irrigation_system = IrrigationSystem.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def irrigation_system_params
-      params.require(:irrigation_system).permit(:uuid)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_irrigation_system
+    @irrigation_system = IrrigationSystem.find(params[:id])
+  end
+
+  def create_irrigation_system_plant
+    IrrigationSystemPlant.create(irrigation_system_id: @irrigation_system.id,
+                                 plant_id: params[:irrigation_system][:plant_id_sensor_1], sensor_no: 1)
+    IrrigationSystemPlant.create(irrigation_system_id: @irrigation_system.id,
+                                 plant_id: params[:irrigation_system][:plant_id_sensor_2], sensor_no: 2)
+  end
+
+  def update_irrigation_system_plant
+    @irrigation_system.irrigation_system_plants.where(sensor_no: 1).first&.update(plant_id: params[:irrigation_system][:plant_id_sensor_1])
+    @irrigation_system.irrigation_system_plants.where(sensor_no: 2).first&.update(plant_id: params[:irrigation_system][:plant_id_sensor_2])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def irrigation_system_params
+    params.require(:irrigation_system).permit(:uuid)
+  end
 end

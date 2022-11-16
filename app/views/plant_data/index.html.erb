@@ -13,22 +13,26 @@
   <table class='table table-striped'>
     <tr>
       <th scope="col" >Irrigation System UUID</th>
-      <th scope="col" >Soil Moisture</th>
       <th scope="col" >Humidity</th>
       <th scope="col" >Temprature</th>
       <th scope="col" >Light Intensity</th>
-      <th scope="col" >Water Walve</th>
       <th scope="col" >Created at</th>
+      <th scope="col" >Soil Moisture 1</th>
+      <th scope="col" >Water Walve 1</th>
+      <th scope="col" >Soil Moisture 2</th>
+      <th scope="col" >Water Walve 2</th>
     </tr>
   <% @plant_data.each do |plant_datum| %>
         <tr>
           <td><%= plant_datum&.irrigation_system&.uuid%></td>
-          <td><%= plant_datum.soil_moisture%></td>
           <td><%= plant_datum.humidity %></td>
           <td><%= plant_datum.temprature %></td>
           <td><%= plant_datum.light_intensity %></td>
-          <td><%= plant_datum.solenoid_walve %></td>
           <td><%= plant_datum.created_at.in_time_zone("Islamabad") %></td>
+          <% plant_datum.soil_moisture_data.each do |soil_moisture_datum| %>
+            <td><%= soil_moisture_datum.value%></td>
+            <td><%= soil_moisture_datum.water_pump %></td>
+          <% end %>
         </tr>
   <% end %>
   </table>

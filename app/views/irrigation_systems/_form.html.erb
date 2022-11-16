@@ -17,6 +17,16 @@
   </div>
 
   <div>
+    <%= form.label :plant_1 %>
+    <%= form.collection_select :plant_id_sensor_1, Plant.order(:name),:id,:name, selected: irrigation_system.irrigation_system_plants.where(sensor_no: 1).first&.plant_id %>
+  </div>
+
+  <div>
+    <%= form.label :plant_2 %>
+    <%= form.collection_select :plant_id_sensor_2, Plant.order(:name),:id,:name, selected: irrigation_system.irrigation_system_plants.where(sensor_no: 2).first&.plant_id %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

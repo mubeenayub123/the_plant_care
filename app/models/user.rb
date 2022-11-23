@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
 
   def full_name
-    firstname.camelcase+' '+lastname.camelcase
+    firstname&.camelcase+' '+lastname&.camelcase
   end
 
   def countries

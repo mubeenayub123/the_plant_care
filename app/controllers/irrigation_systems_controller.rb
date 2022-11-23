@@ -21,15 +21,15 @@ class IrrigationSystemsController < ApplicationController
 
   # POST /irrigation_systems or /irrigation_systems.json
   def create
-    @irrigation_system = IrrigationSystem.new(irrigation_system_params)
-    @irrigation_system.user = current_user
+    @irrigation_system = IrrigationSystem.find_by(irrigation_system_params)
+    @irrigation_system.user = current_user if @irrigation_system.user.blank?
 
     respond_to do |format|
       if @irrigation_system.save && create_irrigation_system_plant
         format.html do
-          redirect_to irrigation_system_url(@irrigation_system), notice: 'Irrigation system was successfully created.'
+          redirect_to irrigation_systems_path, notice: 'Irrigation system was successfully created.'
         end
-        format.json { render :show, status: :created, location: @irrigation_system }
+        format.json { render :index, status: :created, location: @irrigation_system }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @irrigation_system.errors, status: :unprocessable_entity }
@@ -42,9 +42,9 @@ class IrrigationSystemsController < ApplicationController
     respond_to do |format|
       if @irrigation_system.update(irrigation_system_params) && update_irrigation_system_plant
         format.html do
-          redirect_to irrigation_system_url(@irrigation_system), notice: 'Irrigation system was successfully updated.'
+          redirect_to irrigation_systems_path, notice: 'Irrigation system was successfully updated.'
         end
-        format.json { render :show, status: :ok, location: @irrigation_system }
+        format.json { render :index, status: :ok, location: @irrigation_system }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @irrigation_system.errors, status: :unprocessable_entity }
@@ -55,7 +55,8 @@ class IrrigationSystemsController < ApplicationController
   # DELETE /irrigation_systems/1 or /irrigation_systems/1.json
   def destroy
     @irrigation_system.irrigation_system_plants.destroy_all
-    @irrigation_system.destroy
+    current_user.irrigation_systems.delete(@irrigation_system.id)
+    puts @irrigation_system.errors.full_messages
 
     respond_to do |format|
       format.html { redirect_to irrigation_systems_url, notice: 'Irrigation system was successfully destroyed.' }

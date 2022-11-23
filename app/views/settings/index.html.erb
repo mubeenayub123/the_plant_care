@@ -1,0 +1,8 @@
+<%= link_to "Back", irrigation_systems_path , class: 'btn btn-secondary mb-3'%>
+
+
+
+<%= button_to 'Edit Profile', edit_user_registration_path, method: :get %>
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>

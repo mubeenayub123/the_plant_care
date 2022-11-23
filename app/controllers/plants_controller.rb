@@ -2,10 +2,11 @@
 
 class PlantsController < ApplicationController
   before_action :set_plant, only: %i[show edit update destroy]
+  before_action :set_plant_category, only: %i[index]
 
   # GET /plants or /plants.json
   def index
-    @plants = Plant.all
+    @plants = @plant_category&.plants&.all
   end
 
   # GET /plants/1 or /plants/1.json
@@ -62,6 +63,10 @@ class PlantsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_plant
     @plant = Plant.find(params[:id])
+  end
+
+  def set_plant_category
+    @plant_category = PlantCategory.find(params[:plant_category_id])
   end
 
   # Only allow a list of trusted parameters through.

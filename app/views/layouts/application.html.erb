@@ -10,10 +10,12 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag "application" %>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
   </head>
 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <body style='background-color: #CFF5E7;'>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
       <div class="container">
         <a class="navbar-brand" href="/">The Plant Care</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
@@ -22,21 +24,30 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
+              <a class="nav-link" href="/plant_categories">Plant Dictionary</a>
+            </li>
+
+            <li class="nav-item active">
               <a class="nav-link" href="/plant_data">Plant Data</a>
             </li>
           </ul>
 
-          <p class="navbar-text float-right">
-            <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.email %></strong>.
-              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-            <% else %>
-              <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-              <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-            <% end %>
-          </p>
+
         </div>
+
+
+
+        <p class="navbar-text float-right">
+          <% if user_signed_in? %>
+            <strong><%= current_user.full_name %></strong>
+            <%= link_to 'Settings', settings_index_path, :class => 'navbar-link' %> |
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+            <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+          <% end %>
+        </p>
+
       </div>
     </nav>
 

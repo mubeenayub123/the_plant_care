@@ -1,7 +1,19 @@
 <div id="<%= dom_id irrigation_system %>">
-  <p>
-    <strong>Uuid:</strong>
-    <%= irrigation_system.uuid %>
-  </p>
+  <div class="card card-body">
+    <div class="d-flex align-items-center">
+      <%= link_to irrigation_system.uuid, dashboard_index_path(id: irrigation_system.id) %>
+      <div class="ml-5">
+        <%= link_to edit_irrigation_system_path(irrigation_system), class: 'me-4 btn btn-outline-warning' do %>
+          <%= fa_icon "pencil-square-o" %>
+        <% end %>
+      </div>
+      <div class="ml-2">
+        <%= button_to irrigation_system, method: :delete, class: 'btn btn-outline-danger', form: {data: {turbo_confirm: 'Are you sure?'}} do %>
+        <%= fa_icon "soild trash" %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
 
 </div>

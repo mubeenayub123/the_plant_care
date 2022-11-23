@@ -1,0 +1,10 @@
+
+
+<%= render @plant_category %>
+
+<div>
+  <%= link_to "Edit this plant category", edit_plant_category_path(@plant_category) %> |
+  <%= link_to "Back to plant categories", plant_categories_path %>
+
+  <%= button_to "Destroy this plant category", @plant_category, method: :delete %>
+</div>

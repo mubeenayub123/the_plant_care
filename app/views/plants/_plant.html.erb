@@ -1,12 +1,7 @@
 <div id="<%= dom_id plant %>">
-  <p>
-    <strong>Name:</strong>
-    <%= plant.name %>
-  </p>
-
-  <p>
-    <strong>Required soil moisture:</strong>
-    <%= plant.required_soil_moisture %>
-  </p>
-
+  <%= link_to plant do %>
+    <div class="card card-body m-2">
+      <%=plant.name.camelcase%>
+    </div>
+  <% end %>
 </div>

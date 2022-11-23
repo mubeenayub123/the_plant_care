@@ -1,10 +1,7 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @plant %>
-
-<div>
-  <%= link_to "Edit this plant", edit_plant_path(@plant) %> |
-  <%= link_to "Back to plants", plants_path %>
-
-  <%= button_to "Destroy this plant", @plant, method: :delete %>
+<div class='d-flex justify-content-between align-items-center'>
+  <h1><%= @plant.name %></h1>
+  <%= image_tag(@plant.image_name, size: "220x150", alt: "Edit Entry") %>
+</div>
+<div class="mt-5">
+  <%= raw @plant.description %>
 </div>

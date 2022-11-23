@@ -1,0 +1,7 @@
+<div id="<%= dom_id plant_category %>">
+  <%= link_to plants_path(plant_category_id: plant_category.id ) do %>
+    <div class="card card-body m-2">
+      <%=plant_category.name.camelcase%>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <%= form_with(model: complaint) do |form| %>
+  <% if complaint.errors.any? %>
+  <div class='alert alert-danger'>
+    <h2><%= pluralize(complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
+
+    <ul>
+      <% complaint.errors.each do |error| %>
+      <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :status, value: (complaint.status || 'pending') %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :user_id, :value => current_user.id %>
+  </div>
+
+  <div>
+    <%= form.label :irrigation_system, style: "display: block" %>
+    <%= form.collection_select :irrigation_system_id, current_user.irrigation_systems, :id, :uuid, {include_blank: 'Chose irrigation System'}, class: 'form-control'%>
+  </div>
+
+  <div>
+    <%= form.submit "Submit", class: 'btn btn-primary mt-3'%>
+  </div>
+  <% end %>
+</div>

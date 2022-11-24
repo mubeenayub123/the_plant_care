@@ -6,6 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :irrigation_systems
+  has_many :complaints
+
+  validates :firstname, :lastname, :phone_number, presence: true
 
 
   def full_name

@@ -17,18 +17,20 @@ class PlantDataController < ApplicationController
       irrigation_system: irrigation_system
     )
 
-    SoilMoistureDatum.create(
+    moisture_data_1 = SoilMoistureDatum.create(
       value: plant_data_params[:value_1],
       water_pump: plant_data_params[:pump_1],
       sensor_no: 1,
       plant_datum: plant_data
     )
-    SoilMoistureDatum.create(
+    moisture_data_2 = SoilMoistureDatum.create(
       value: plant_data_params[:value_2],
       water_pump: plant_data_params[:pump_2],
       sensor_no: 2,
       plant_datum: plant_data
     )
+
+    render json: { water_pump_1: moisture_data_1.water_pump, water_pump_2: moisture_data_2.water_pump }
   end
 
   def export

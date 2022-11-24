@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Dear <%= @user.full_name %></p>
+    <p>You filed a new Complaint for Irrigation System # <%= @complaint.irrigation_system.uuid %>!</p>
+    <p>
+
+    Complaint#: <%= @complaint.id %><br>
+    </p>
+
+    <p>Your Complaint Will be resolved in 5 business days. Thanks for your Patience</p>
+    <p>If you have any queries you can reply to this email or Contact us at fyp34b@gmail.com</p>
+  </body>
+</html>

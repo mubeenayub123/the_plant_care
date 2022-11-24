@@ -22,10 +22,9 @@ class IrrigationSystemsController < ApplicationController
   # POST /irrigation_systems or /irrigation_systems.json
   def create
     @irrigation_system = IrrigationSystem.find_by(irrigation_system_params)
-    @irrigation_system.user = current_user if @irrigation_system.user.blank?
 
     respond_to do |format|
-      if @irrigation_system.save && create_irrigation_system_plant
+      if irrigation_system_found? && create_irrigation_system_plant && assign_to_user
         format.html do
           redirect_to irrigation_systems_path, notice: 'Irrigation system was successfully created.'
         end
@@ -77,6 +76,28 @@ class IrrigationSystemsController < ApplicationController
     IrrigationSystemPlant.create(irrigation_system_id: @irrigation_system.id,
                                  plant_id: params[:irrigation_system][:plant_id_sensor_2], sensor_no: 2)
   end
+
+  def assign_to_user
+    if @irrigation_system.user.blank?
+      @irrigation_system.user = current_user
+      @irrigation_system.save
+    else
+      @irrigation_system = IrrigationSystem.new
+      @irrigation_system.errors.add(:base,'System Already In Use')
+      false
+    end
+  end
+
+  def irrigation_system_found?
+    if @irrigation_system.present?
+      true
+    else
+      @irrigation_system = IrrigationSystem.new
+      @irrigation_system.errors.add(:base,'System not found. Please enter correct System Identification Number')
+      false
+    end
+  end
+
 
   def update_irrigation_system_plant
     @irrigation_system.irrigation_system_plants.where(sensor_no: 1).first&.update(plant_id: params[:irrigation_system][:plant_id_sensor_1])

@@ -1,0 +1,17 @@
+<%= link_to "Back", complaints_path, class: 'btn btn-secondary mb-3'%>
+
+<div class="container">
+  <div class="card card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1 class='card-title'> <%= @complaint.title.camelcase %> </h1>
+      <% class_id = 'badge badge-success' if @complaint.completed? %>
+      <% class_id = 'badge badge-secondary' if @complaint.pending? %>
+      <% class_id = 'badge badge-danger' if @complaint.closed? %>
+      <span class="<%= class_id %> ml-5" ><%= @complaint.status.camelcase %></span>
+
+    </div>
+    <p> <%= @complaint.description %> </p>
+
+  </div>
+
+</div>

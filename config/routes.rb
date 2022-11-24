@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :complaints
   get 'settings/index'
   resources :plant_categories
   resources :plant_data

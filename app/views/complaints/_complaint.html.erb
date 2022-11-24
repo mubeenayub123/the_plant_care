@@ -1,0 +1,19 @@
+<div id="<%= dom_id complaint %>">
+  <div class="card card-body">
+    <div class="d-flex align-items-center">
+      <%= link_to complaint.title, complaint_path(complaint) %>
+      <% class_id = 'badge badge-success' if complaint.completed? %>
+      <% class_id = 'badge badge-secondary' if complaint.pending? %>
+      <% class_id = 'badge badge-danger' if complaint.closed? %>
+      <span class="<%= class_id %> ml-5" ><%= complaint.status.camelcase %></span>
+      <% if complaint.pending? %>
+        <div class="ml-5">
+          <%= link_to 'Edit', edit_complaint_path(complaint), class: 'me-4 btn btn-outline-warning' %>
+        </div>
+        <div class="ml-2">
+          <%= link_to 'Close Complaint', complaint_path(complaint), method: :delete ,class: 'btn btn-outline-danger' %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

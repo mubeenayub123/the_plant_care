@@ -1,8 +1,6 @@
 <%= form_with(model: irrigation_system) do |form| %>
   <% if irrigation_system.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(irrigation_system.errors.count, "error") %> prohibited this irrigation_system from being saved:</h2>
-
+    <div class='alert alert-danger'>
       <ul>
         <% irrigation_system.errors.each do |error| %>
           <li><%= error.full_message %></li>

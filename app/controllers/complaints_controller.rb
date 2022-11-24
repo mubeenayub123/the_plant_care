@@ -25,7 +25,7 @@ class ComplaintsController < ApplicationController
 
     respond_to do |format|
       if @complaint.save
-        ComplaintMailer.with(complaint: @complaint).new_complaint_email.deliver
+        ComplaintMailer.with(complaint: @complaint).new_complaint_email.deliver_later
         format.html { redirect_to complaints_path, notice: "Complaint was successfully created." }
         format.json { render :index, status: :created, location: @complaint }
       else

@@ -7,8 +7,8 @@ class Charts::HumidityChart
   def generate
     Fusioncharts::Chart.new(
       {
-        width: '400',
-        height: '300',
+        width: '350',
+        height: '250',
         type: 'angulargauge',
         renderAt: 'humidityChartContainer',
         dataSource: {

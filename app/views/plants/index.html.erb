@@ -1,6 +1,6 @@
 <h1><%= @plant_category.name.camelcase + ' Plants' %></h1>
 
-<div id="plants" class='d-flex flex-wrap'>
+<div id="plants" class='d-flex flex-wrap mt-5'>
   <% @plants.each do |plant| %>
     <%= render plant %>
   <% end %>

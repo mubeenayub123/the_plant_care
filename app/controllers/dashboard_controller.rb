@@ -10,6 +10,7 @@ class DashboardController < ApplicationController
     end
     @humidity_chart = Charts::HumidityChart.new(plant_data: @plant_data).generate
     @light_intensity_chart = Charts::LightIntensityChart.new(plant_data: @plant_data).generate
+    @water_level_chart = Charts::WaterLevelChart.new(plant_data: @plant_data).generate
   end
 
   def set_objects

@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
      devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname, :country_code, :line1, :line2, :postcode, :city, :phone_number, :province, :email, :password, :gender])
      devise_parameter_sanitizer.permit(:account_update, keys: [:firstname, :lastname, :country_code, :line1, :line2, :postcode, :city, :phone_number, :province, :email, :password, :current_password, :gender])
   end
+
+  def after_sign_in_path_for(resource)
+    current_user.admin? ? rails_admin_path : root_path
+  end
 end

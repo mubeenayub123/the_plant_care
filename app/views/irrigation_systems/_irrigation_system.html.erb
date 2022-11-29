@@ -8,7 +8,7 @@
         <% end %>
       </div>
       <div class="ml-2">
-        <%= button_to irrigation_system, method: :delete, class: 'btn btn-outline-danger', form: {data: {turbo_confirm: 'Are you sure?'}} do %>
+        <%= button_to irrigation_system, method: :delete, class: 'btn btn-outline-danger', data: { confirm: "Are you sure?" } do %>
         <%= fa_icon "soild trash" %>
         <% end %>
       </div>

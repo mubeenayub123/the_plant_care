@@ -18,4 +18,8 @@ class User < ApplicationRecord
   def countries
     ISO3166::Country.countries.map(&:name)
   end
+
+  def admin?
+    self.admin == true
+  end
 end

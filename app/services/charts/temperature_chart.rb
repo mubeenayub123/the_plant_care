@@ -7,8 +7,8 @@ class Charts::TemperatureChart
   def generate
     Fusioncharts::Chart.new(
       {
-        width: '400',
-        height: '300',
+        width: '350',
+        height: '250',
         type: 'thermometer',
         renderAt: 'shartContainer',
         dataSource: {

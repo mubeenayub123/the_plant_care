@@ -24,7 +24,7 @@ class Charts::MoistureChart
              :"gaugeoriginx" => '190',
              :"gaugeoriginy" => '220',
              :"gaugeouterradius" => '190',
-             :"theme" => 'fusion',
+             :"theme" => 'gammel',
              :"showvalue" => '1',
              :"numbersuffix" => ' %',
              :"valuefontsize" => '25'

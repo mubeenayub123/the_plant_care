@@ -22,7 +22,7 @@ class Charts::TemperatureChart
             :"gaugebordercolor" => '#008ee4',
             :"gaugeborderthickness" => '2',
             :"plottooltext" => 'Temperature: <b>$datavalue</b> ',
-            :"theme" => 'fusion',
+            :"theme" => 'gammel',
             :"showvalue" => '1'
           },
           :"value" => plant_data&.temprature

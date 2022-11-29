@@ -20,7 +20,7 @@ class Charts::LightIntensityChart
             :"showvalue" => '0',
             :"chartbottommargin" => '50',
             :"ledgap" => '1',
-            :"theme" => 'fusion'
+            :"theme" => 'gammel'
           },
           :"colorrange" => {
             :"color" => [

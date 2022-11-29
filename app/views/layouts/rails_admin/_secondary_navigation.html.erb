@@ -12,7 +12,7 @@
     <% end %>
     <% if logout_path.present? %>
       <li class="nav-item">
-        <%= link_to logout_path, class: 'nav-link', data: { "turbo-method": logout_method } do %>
+        <%= link_to logout_path, method: logout_method, class: 'nav-link' do %>
           <span class="badge bg-danger"><%= t('admin.misc.log_out') %></span>
         <% end %>
       </li>

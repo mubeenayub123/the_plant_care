@@ -16,6 +16,7 @@
       <th scope="col" >Humidity</th>
       <th scope="col" >Temprature</th>
       <th scope="col" >Light Intensity</th>
+      <th scope="col" >Water Level</th>
       <th scope="col" >Created at</th>
       <th scope="col" >Soil Moisture 1</th>
       <th scope="col" >Water Walve 1</th>
@@ -28,6 +29,7 @@
           <td><%= plant_datum.humidity %></td>
           <td><%= plant_datum.temprature %></td>
           <td><%= plant_datum.light_intensity %></td>
+          <td><%= plant_datum.water_level %></td>
           <td><%= plant_datum.created_at.in_time_zone("Islamabad") %></td>
           <% plant_datum.soil_moisture_data.each do |soil_moisture_datum| %>
             <td><%= soil_moisture_datum.value%></td>

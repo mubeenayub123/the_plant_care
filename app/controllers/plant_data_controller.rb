@@ -14,6 +14,7 @@ class PlantDataController < ApplicationController
       humidity: plant_data_params[:humidity],
       temprature: plant_data_params[:temprature],
       light_intensity: plant_data_params[:light_intensity],
+      water_level: plant_data_params[:water_level],
       irrigation_system: irrigation_system
     )
 
@@ -39,6 +40,6 @@ class PlantDataController < ApplicationController
 
   def plant_data_params
     params.require(:plant_data).permit(:humidity, :temprature, :light_intensity, :irrigation_system_uuid, :value_1,
-                                       :value_2, :pump_1, :pump_2)
+                                       :value_2, :pump_1, :pump_2, :water_level)
   end
 end

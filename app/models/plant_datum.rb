@@ -3,6 +3,7 @@
 class PlantDatum < ApplicationRecord
   belongs_to :irrigation_system
   has_many :soil_moisture_data
+  after_create :send_alert_email, if: :water_level_low?
 
   def self.csv
     CSV.generate do |csv|
@@ -15,5 +16,13 @@ class PlantDatum < ApplicationRecord
                 sensor1&.water_pump, sensor2&.value, sensor2&.water_pump]
       end
     end
+  end
+
+  def send_alert_email
+    AlertMailer.with(plant_data: self).new_alert_email.deliver_later
+  end
+
+  def water_level_low?
+    self.water_level < 100
   end
 end

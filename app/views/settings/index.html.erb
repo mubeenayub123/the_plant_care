@@ -1,11 +1,10 @@
 <%= link_to "Back", irrigation_systems_path , class: 'btn btn-secondary mb-3'%>
+<div class="d-flex">
+  <%= button_to 'Edit Profile', edit_user_registration_path, method: :get, class: 'btn btn-outline-primary mr-3' %>
+  <%= button_to 'Complaints', complaints_path, method: :get, class: 'btn btn-info'%>
+</div>
+<div class="mt-5">
+  <h3>Cancel my account</h3>
 
-
-
-<%= button_to 'Edit Profile', edit_user_registration_path, method: :get %>
-<%= button_to 'Complaints', complaints_path, method: :get %>
-
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  <p>Unhappy? <%= button_to "Cancel my account", registration_path(current_user), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'%></p>
+</div>

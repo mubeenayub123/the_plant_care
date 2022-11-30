@@ -28,6 +28,12 @@
     </div>
 
   <div class="d-flex">
+
+    <div class="field mr-3">
+      <%= f.label :city %><br />
+      <%= f.text_field :city, autofocus: true, autocomplete: "City", class: 'form-control' %>
+    </div>
+
     <div class="field mr-3">
       <%= f.label :province %><br />
       <%= f.text_field :province, autofocus: true, autocomplete: "First Name", class: 'form-control' %>

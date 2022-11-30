@@ -3,7 +3,7 @@
 class PlantDatum < ApplicationRecord
   belongs_to :irrigation_system
   has_many :soil_moisture_data
-  after_create :send_alert_email, if: :water_level_low?
+  after_create_commit :send_alert_email, if: :water_level_low?
 
   def self.csv
     CSV.generate do |csv|

@@ -23,6 +23,6 @@ class PlantDatum < ApplicationRecord
   end
 
   def water_level_low?
-    self.water_level < 100
+    self.water_level < 200
   end
 end

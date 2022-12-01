@@ -15,7 +15,7 @@ class Charts::WaterLevelChart
                 :"chart" => {
                   :"caption" => 'Water Level',
                   :"lowerlimit" => '0',
-                  :"upperlimit" => '1.5',
+                  :"upperlimit" => '1',
                   :"lowerlimitdisplay" => 'Empty',
                   :"upperlimitdisplay" => 'Full',
                   :"numbersuffix" => ' ltrs',
@@ -24,9 +24,15 @@ class Charts::WaterLevelChart
                   :"cylfillhoveralpha" => '85',
                   :"theme" => 'gammel'
                 },
-                :"value" => '.50'
+                :"value" => "#{value}"
               }
             }
           )
+  end
+
+  def value
+    return 0.5 if plant_data.water_level < 200
+
+    1
   end
 end

@@ -14,6 +14,7 @@ class SoilMoistureDatum < ApplicationRecord
     self.update prediction: prediction
 
     water_requirement = MachineLearning::WaterQuantityCalculator.new(moisture_data: self).calculate
-    self.update water_pump: water_requirement
+
+    self.update water_pump: water_requirement.negative? ? 0 : water_requirement
   end
 end

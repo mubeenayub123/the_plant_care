@@ -11,7 +11,7 @@ class MachineLearning::WaterQuantityCalculator
   def calculate
     return 0 unless ideal_moisture_level.present?
 
-    (((temprature - prediction)*(ideal_moisture_level - value))/15)/SoilMoistureDatum::WATER_PER_SECOND
+    ((((temprature - prediction)*(ideal_moisture_level - value))/15)/SoilMoistureDatum::WATER_PER_SECOND)
   end
 
   def ideal_moisture_level

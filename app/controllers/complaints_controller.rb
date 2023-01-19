@@ -1,5 +1,5 @@
 class ComplaintsController < ApplicationController
-  before_action :set_complaint, only: %i[ show edit update destroy ]
+  before_action :set_complaint, only: %i[ show edit update close ]
 
   # GET /complaints or /complaints.json
   def index
@@ -50,6 +50,16 @@ class ComplaintsController < ApplicationController
 
   # DELETE /complaints/1 or /complaints/1.json
   def destroy
+    @complaint.closed!
+
+    respond_to do |format|
+      ComplaintMailer.with(complaint: @complaint).close_complaint_email.deliver_later
+      format.html { redirect_to complaints_url, notice: "Complaint was successfully Closed." }
+      format.json { head :no_content }
+    end
+  end
+
+  def close
     @complaint.closed!
 
     respond_to do |format|

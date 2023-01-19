@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  resources :complaints
+  resources :complaints do
+    get 'close', to: 'complaints#close', on: :member
+  end
   get 'settings/index'
   resources :plant_categories
   resources :plant_data

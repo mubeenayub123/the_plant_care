@@ -7,5 +7,7 @@
     <% @moisture_charts.each do |moisture_chart| %>
     <div class="mr-2 mb-2" id="<%= moisture_chart.renderAt -%>"><%= moisture_chart.render() %></div>
     <% end %>
+    <div id="waterUsageChartContainer" class='mr-2 mb-2'><%= @water_usage_chart.render() %></div>
+
   </div>
 </div>

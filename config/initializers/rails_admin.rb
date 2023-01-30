@@ -2,13 +2,13 @@ RailsAdmin.config do |config|
   config.asset_source = :importmap
 
   ### Popular gems integration
-  config.model 'ActiveStorage::Blob' do
-    visible false
-  end
-
-  config.model 'ActiveStorage::Attachment' do
-    visible false
-  end
+  # config.model 'ActiveStorage::Blob' do
+  #   visible false
+  # end
+  #
+  # config.model 'ActiveStorage::Attachment' do
+  #   visible false
+  # end
 
   config.current_user_method(&:current_user)
   config.authorize_with do

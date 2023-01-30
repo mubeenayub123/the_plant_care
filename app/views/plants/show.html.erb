@@ -1,7 +1,7 @@
 <div class="card card-body">
   <div class='d-flex justify-content-between align-items-center'>
     <h1><%= @plant.name %></h1>
-    <%= image_tag(@plant.image_name, size: "220x150", alt: "Edit Entry") %>
+    <%= image_tag(@plant.secondary_image.representation(resize_to_limit: [220, 150]), size: "220x150", alt: "Edit Entry") %>
   </div>
   <div class="mt-5">
     <%= raw @plant.description %>

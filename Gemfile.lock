@@ -318,7 +318,6 @@ DEPENDENCIES
   rails-ujs (~> 0.1.0)
   rails_admin (~> 3.0)
   redis (~> 4.0)
-  ruby-vips
   selenium-webdriver
   sprockets-rails
   stimulus-rails

@@ -22,7 +22,11 @@ class Charts::WaterLevelChart
                   :"cylfillcolor" => '#5D62B5',
                   :"plottooltext" => 'Water : <b>20 ltrs</b>',
                   :"cylfillhoveralpha" => '85',
-                  :"theme" => 'gammel'
+                  :"theme" => 'zune',
+                  "bgColor": "EEEEEE,CCCCCC",
+                  "bgratio": "60,40",
+                  "bgAlpha": "70,80",
+                  "bgAngle": "90"
                 },
                 :"value" => "#{value}"
               }

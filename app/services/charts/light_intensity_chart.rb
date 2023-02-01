@@ -20,7 +20,11 @@ class Charts::LightIntensityChart
             :"showvalue" => '0',
             :"chartbottommargin" => '50',
             :"ledgap" => '1',
-            :"theme" => 'zune'
+            :"theme" => 'zune',
+            "bgColor": "EEEEEE,CCCCCC",
+            "bgratio": "60,40",
+            "bgAlpha": "70,80",
+            "bgAngle": "90"
           },
           :"colorrange" => {
             :"color" => [

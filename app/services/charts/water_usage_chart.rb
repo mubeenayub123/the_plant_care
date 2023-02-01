@@ -13,12 +13,16 @@ class Charts::WaterUsageChart
         renderAt: 'waterUsageChartContainer',
         dataSource: {
           :"chart" => {
-            :"caption" => 'Water Consumed By Irrigation System',
+            :"caption" => 'Water Consumption By Irrigation System',
             :"subcaption" => 'All Plants',
             :"xaxisname" => 'Time Interval',
             :"yaxisname" => 'Water Usage (Liters)',
             :"numbersuffix" => 'L',
-            :"theme" => 'gammel'
+            :"theme" => 'gammel',
+            "bgColor": "EEEEEE,CCCCCC",
+            "bgratio": "60,40",
+            "bgAlpha": "70,80",
+            "bgAngle": "90"
           },
           :"data" => [
             { :"label" => 'One Month', :"value" => one_month_water_usage },
@@ -32,21 +36,21 @@ class Charts::WaterUsageChart
 
 
   def one_day_water_usage
-    irrigation_system.plant_data.where(created_at: 1.day.ago..).sum do |plant_datum|
+    (irrigation_system.plant_data.where(created_at: 1.day.ago..).sum do |plant_datum|
       plant_datum.soil_moisture_data.sum(:water_pump)
-    end * 15
+    end * 15)/1000
   end
 
   def one_week_water_usage
-    irrigation_system.plant_data.where(created_at: 1.week.ago..).sum do |plant_datum|
+    (irrigation_system.plant_data.where(created_at: 1.week.ago..).sum do |plant_datum|
       plant_datum.soil_moisture_data.sum(:water_pump)
-    end * 15
+    end * 15)/1000
   end
 
   def one_month_water_usage
-    irrigation_system.plant_data.where(created_at: 1.month.ago..).sum do |plant_datum|
+    (irrigation_system.plant_data.where(created_at: 1.month.ago..).sum do |plant_datum|
       plant_datum.soil_moisture_data.sum(:water_pump)
-    end * 15
+    end * 15)/1000
   end
 
 end

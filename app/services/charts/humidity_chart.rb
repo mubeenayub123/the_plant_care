@@ -14,17 +14,21 @@ class Charts::HumidityChart
         dataSource: {
           :"chart" => {
             :"caption" => "Humidity",
-            :"lowerlimit" => '50',
-            :"upperlimit" => '150',
+            :"lowerlimit" => '0',
+            :"upperlimit" => '100',
             :"showvalue" => '1',
             :"numbersuffix" => '%',
             :"theme" => 'gammel',
-            :"showtooltip" => '0'
+            :"showtooltip" => '0',
+            "bgColor": "EEEEEE,CCCCCC",
+            "bgratio": "60,40",
+            "bgAlpha": "70,80",
+            "bgAngle": "180"
           },
           :"colorrange" => {
             :"color" => [
               {
-                :"minvalue" => '50', :"maxvalue" => '150', :"code" => '#F2726F'
+                :"minvalue" => '0', :"maxvalue" => '100', :"code" => '#0900ff'
               }
             ]
           },

@@ -27,22 +27,28 @@ class Charts::MoistureChart
              :"theme" => 'gammel',
              :"showvalue" => '1',
              :"numbersuffix" => ' %',
-             :"valuefontsize" => '25'
+             :"valuefontsize" => '25',
+             "bgColor": "EEEEEE,CCCCCC",
+             "bgratio": "60,40",
+             "bgAlpha": "70,80",
+             "bgAngle": "90"
            },
            :"colorrange" => {
              :"color" => [
                {
-                 :"minvalue" => '0', :"maxvalue" => '40', :"code" => '#F2726F'
+                 :"minvalue" => '0', :"maxvalue" => '20', :"code" => '#C9F6FF'
                },
                {
-                 :"minvalue" => normal_moisture - 10,
-                 :"maxvalue" => normal_moisture + 10,
-                 :"code" => '#62B58F'
+                 :"minvalue" => '20', :"maxvalue" => '40', :"code" => '#97EBF4'
                },
                {
-                 :"minvalue" => '60',
-                 :"maxvalue" => '80',
-                 :"code" => '#F2726F'
+                 :"minvalue" => '40', :"maxvalue" => '60', :"code" => '#7AE5F5'
+               },
+               {
+                 :"minvalue" => '60', :"maxvalue" => '80', :"code" => '#65DDEF'
+               },
+               {
+                 :"minvalue" => '80', :"maxvalue" => '100', :"code" => '#35D6ED'
                }
              ]
            },
